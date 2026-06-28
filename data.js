@@ -18,8 +18,8 @@ window.SITE = {
   },
 
   worlds: [
-    { id:"build",   label:"WORK",    tagline:"경험과 팁",  tagline_en:"Experience & Tips", cats:["ai","sales","market"] },
-    { id:"grow",    label:"GROW",    tagline:"도전·성장·생각의 기록",  tagline_en:"Challenges, growth, thoughts", cats:["career","story","essay"] },
+    { id:"build",   label:"WORK",    tagline:"직무 인사이트 및 팁",  tagline_en:"Job Insights & Tips", cats:["ai","sales","market"] },
+    { id:"grow",    label:"GROW",    tagline:"도전·성장·생각의 기록",  tagline_en:"Challenges, growth, thoughts", cats:["story","career","essay"] },
     { id:"connect", label:"CONNECT", tagline:"연결의 흔적",           tagline_en:"Traces of connection",         cats:["network"] }
   ],
 
