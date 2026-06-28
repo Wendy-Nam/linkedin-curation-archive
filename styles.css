@@ -185,8 +185,8 @@ a { color: inherit; text-decoration: none; }
 .btn-ghost:hover { background: var(--bg-hover); }
 
 /* ===== overlay ===== */
-.sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 45; opacity: 0; transition: opacity .2s; }
-.sidebar-overlay.visible { opacity: 1; }
+.sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 45; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.sidebar-overlay.visible { opacity: 1; pointer-events: auto; }
 
 /* ===== resume modal ===== */
 .modal-overlay { position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; padding: 20px; }
