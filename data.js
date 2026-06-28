@@ -18,7 +18,7 @@ window.SITE = {
   },
 
   worlds: [
-    { id:"build",   label:"WORK",    tagline:"현장 실무와 시장 인사이트",  tagline_en:"Hands-on practice & market insight", cats:["ai","sales","market"] },
+    { id:"build",   label:"WORK",    tagline:"AI · 세일즈 · 시장",  tagline_en:"AI · Sales · Market", cats:["ai","sales","market"] },
     { id:"grow",    label:"GROW",    tagline:"도전·성장·생각의 기록",  tagline_en:"Challenges, growth, thoughts", cats:["career","story","essay"] },
     { id:"connect", label:"CONNECT", tagline:"연결의 흔적",           tagline_en:"Traces of connection",         cats:["network"] }
   ],
