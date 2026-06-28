@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light" data-lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>남서아 (Wendy) · LinkedIn 글 큐레이션</title>
+  <meta name="description" content="남서아(Wendy)의 링크드인 글을 BUILD · GROW · CONNECT 세 갈래로 큐레이션한 아카이브." />
+  <meta property="og:title" content="남서아 (Wendy) · LinkedIn 글 큐레이션" />
+  <meta property="og:description" content="BUILD · GROW · CONNECT — 링크드인 글 아카이브" />
+  <meta property="og:type" content="website" />
+
+  <!-- FOUC 방지: 스타일 로드 전 테마/언어 적용 -->
+  <script>
+    (function(){
+      var t = localStorage.getItem("theme");
+      if (t === "dark") document.documentElement.setAttribute("data-theme","dark");
+      var l = localStorage.getItem("lang");
+      if (l === "en") document.documentElement.setAttribute("data-lang","en");
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== 모바일 헤더 ===== -->
+  <header class="mobile-header">
+    <button id="mobile-menu-btn" class="icon-btn" aria-label="메뉴" aria-expanded="false" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <span class="mobile-title">ARCHIVE</span>
+    <div class="mobile-actions">
+      <div id="lang-toggle-m" class="lang-seg" role="group" aria-label="언어 / Language">
+        <button data-lang="ko" type="button">KO</button>
+        <button data-lang="en" type="button">EN</button>
+      </div>
+      <button id="theme-toggle-m" class="icon-btn" aria-label="테마" type="button">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="layout">
+
+    <!-- ===== 사이드바 ===== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-scroll">
+        <div class="sidebar-head">
+          <span class="brand">ARCHIVE</span>
+          <div class="sidebar-toggles">
+            <div id="lang-toggle" class="lang-seg" role="group" aria-label="언어 / Language">
+              <button data-lang="ko" type="button">KO</button>
+              <button data-lang="en" type="button">EN</button>
+            </div>
+            <button id="theme-toggle" class="icon-btn" aria-label="테마 전환" type="button">
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <nav class="cat-tree" id="cat-tree" aria-label="카테고리"></nav>
+
+        <div class="sidebar-foot">© <span id="sidebar-year"></span> 남서아 (Wendy)</div>
+      </div>
+    </aside>
+
+    <!-- ===== 메인 ===== -->
+    <main class="main">
+      <div class="main-top">
+        <div class="main-top-row">
+          <h1 class="section-title" id="section-title"></h1>
+          <span class="post-count" id="post-count"></span>
+        </div>
+        <div class="main-controls">
+          <div class="search-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+            <input id="search" type="search" placeholder="글 검색…" autocomplete="off" aria-label="글 검색" />
+          </div>
+          <div class="sort-toggle" id="sort-toggle" role="group" aria-label="정렬">
+            <button data-sort="popular" type="button">인기순</button>
+            <button data-sort="recent" type="button">최신순</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-list" id="post-list" role="list"></div>
+
+      <div class="empty-state" id="empty-state" hidden>
+        <p id="empty-msg">검색 결과가 없습니다.</p>
+        <button class="btn-ghost" id="clear-search" type="button">전체 보기</button>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ===== 이력서 모달 ===== -->
+  <div class="modal-overlay" id="resume-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="resume-title">
+      <button class="modal-close" id="resume-close" aria-label="닫기" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+      <h2 class="modal-title" id="resume-title">이력서 / Resume</h2>
+      <div class="modal-controls">
+        <div class="seg seg-lang" id="resume-lang">
+          <button data-rlang="ko" type="button">KO</button>
+          <button data-rlang="en" type="button">EN</button>
+        </div>
+        <select id="resume-version" class="resume-select" aria-label="버전"></select>
+      </div>
+      <div class="resume-preview" id="resume-preview"></div>
+      <div class="modal-actions">
+        <a class="btn-primary" id="resume-download" download>다운로드</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
