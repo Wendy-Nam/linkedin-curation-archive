@@ -285,7 +285,8 @@
     rLang = resumeFilesFor(lang).length ? lang : ((resume.files[0] && resume.files[0].lang) || "ko");
     els.resumeLang.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.rlang === rLang));
     populateResumeVersions();
-    els.resumeDl.textContent = isEn() ? "Download" : "다운로드";
+    const dlLabel = els.resumeDl.querySelector('.dl-label');
+    if (dlLabel) dlLabel.textContent = isEn() ? "Download" : "다운로드";
     els.modal.hidden = false; document.body.style.overflow = "hidden"; updateResume();
   }
   function closeResume() { els.modal.hidden = true; document.body.style.overflow = ""; }
