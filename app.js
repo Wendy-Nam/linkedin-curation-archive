@@ -295,7 +295,10 @@
     const pathPdf = els.resumeVer.value;
     const box = (msg) => { els.resumePreview.innerHTML = `<div class="resume-empty"><p>${msg}</p>${pathPdf ? `<p class="resume-empty-path">${esc(pathPdf)}</p>` : ""}</div>`; };
     if (!pathPdf) { els.resumeDl.removeAttribute("href"); ph_disable(true); box(isEn() ? "No resume for this language yet." : "이 언어의 이력서가 아직 없습니다."); return; }
-    els.resumeDl.href = pathPdf; ph_disable(false);
+    els.resumeDl.href = pathPdf;
+    const rf = (resume.files || []).find((f) => f.path === pathPdf);
+    if (rf && rf.dl) els.resumeDl.setAttribute("download", rf.dl); else els.resumeDl.removeAttribute("download");
+    ph_disable(false);
     const miss = () => box(isEn() ? "File not found. Add it under /assets/resume." : "파일을 찾지 못했어요. /assets/resume 에 넣어주세요.");
     fetch(pathPdf, { method: "HEAD" }).then((r) => { if (r.ok) els.resumePreview.innerHTML = `<iframe src="${esc(pathPdf)}" title="resume"></iframe>`; else miss(); }).catch(miss);
   }
