@@ -209,6 +209,7 @@ a { color: inherit; text-decoration: none; }
 .resume-empty-path { font-size: 11.5px; color: var(--text-mute); }
 .modal-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .btn-primary { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; font-size: 13px; font-weight: 600; background: var(--active); color: var(--bg); border-radius: 8px; }
+#resume-download { display: none; }
 .btn-outline { display: inline-flex; align-items: center; padding: 9px 16px; font-size: 13px; font-weight: 600; color: var(--text-sub); border: 1px solid var(--border-2); border-radius: 8px; }
 .btn-outline:hover { background: var(--bg-hover); color: var(--text); }
 
@@ -222,5 +223,5 @@ a { color: inherit; text-decoration: none; }
   .main-top { position: static; }
   .sidebar-toggles { display: none; }
   .dl-label { display: none; }
-  #resume-download { padding: 9px 12px; }
+  #resume-download { display: inline-flex; padding: 9px 12px; }
 }
