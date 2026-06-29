@@ -87,7 +87,39 @@ https://your-site.vercel.app/#sales    → 세일즈 실무 탭
 
 ---
 
-## 6. (다음 단계) 폰에서 "공유 → 담기" 기능
+## 6. 방문자 통계 (Google Analytics)
+
+이 코드에는 기본으로 GA4 측정 ID가 심어져 있습니다.
+**그대로 쓰면 제 계정으로 통계가 잡히니 반드시 본인 ID로 교체하세요.**
+
+### GA4 계정 만들기
+
+1. [analytics.google.com](https://analytics.google.com) → Google 계정으로 로그인
+2. **측정 시작** 클릭
+3. 계정 이름 아무거나 입력 → 속성 이름: 본인 사이트 이름
+4. 플랫폼 **웹** 선택 → 사이트 URL 입력
+5. 완료하면 **측정 ID** (`G-XXXXXXXXXX` 형식) 발급
+
+### index.html에서 교체
+
+`index.html` 상단의 아래 코드에서 `G-ZVS1SMYQVP` 부분을 본인 ID로 교체합니다.
+
+```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');  ← 여기도 교체
+</script>
+```
+
+GA 없이 쓰고 싶으면 위 `<script>` 블록 전체를 삭제해도 됩니다.
+
+---
+
+## 7. (다음 단계) 폰에서 "공유 → 담기" 기능
 
 지금 구조는 **읽기 전용 공개 블로그**입니다.
 나중에 *링크드인 글을 폰에서 공유시트로 바로 담는* 기능을 원하면:
