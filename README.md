@@ -15,6 +15,35 @@ Linkedin_Curation_Website/
 
 ---
 
+## 본인 버전 만들기 (Fork)
+
+이 레포를 포크해서 **내 링크드인 글 아카이브**로 만들 수 있습니다.
+
+### 4단계 요약
+
+**1. 내 링크드인 포스팅 데이터 수집**
+- [Apify — LinkedIn Profile Posts Scraper](https://console.apify.com/actors/A3cAPGpwBEG8RJwse/input) 에서 본인 프로필 URL 입력 후 실행
+- 결과를 **JSON 파일**로 다운로드
+
+**2. 이 레포 코드 받기**
+- 이 레포를 Fork → 본인 GitHub에 복제
+- [Claude Code](https://claude.ai/code) 에 레포 링크 전달
+
+**3. Claude Code에 데이터 변환 요청**
+- 다운로드한 Apify JSON 파일을 Claude Code에 전달
+- `tools/build-data.js` 를 실행하면 `data.js` 로 자동 변환됩니다
+
+  > ⚠️ `tools/build-data.js` 상단의 `APIFY_JSON` 경로를 본인 JSON 파일 경로로 수정하세요.
+  > ```js
+  > const APIFY_JSON = path.resolve(__dirname, "다운로드한파일.json");
+  > ```
+  > 이후 터미널에서: `node tools/build-data.js`
+
+**4. Vercel에 배포**
+- [vercel.com](https://vercel.com) → GitHub 레포 import → 무료 호스팅 완료
+
+---
+
 ## 1. 지금 바로 열어보기
 
 `index.html` 파일을 **더블클릭** → 브라우저에서 바로 열립니다. (서버 불필요)
