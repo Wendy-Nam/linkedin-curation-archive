@@ -274,6 +274,7 @@
 
   /* ── resume modal ── */
   let rLang = "ko";
+  let curResumePath = "", curResumeName = "";
   const resumeFilesFor = (l) => (resume.files || []).filter((f) => f.lang === l);
   function populateResumeVersions() {
     const files = resumeFilesFor(rLang);
@@ -294,10 +295,12 @@
   function updateResume() {
     const pathPdf = els.resumeVer.value;
     const box = (msg) => { els.resumePreview.innerHTML = `<div class="resume-empty"><p>${msg}</p>${pathPdf ? `<p class="resume-empty-path">${esc(pathPdf)}</p>` : ""}</div>`; };
-    if (!pathPdf) { els.resumeDl.removeAttribute("href"); ph_disable(true); box(isEn() ? "No resume for this language yet." : "이 언어의 이력서가 아직 없습니다."); return; }
+    if (!pathPdf) { curResumePath = ""; els.resumeDl.removeAttribute("href"); ph_disable(true); box(isEn() ? "No resume for this language yet." : "이 언어의 이력서가 아직 없습니다."); return; }
     els.resumeDl.href = pathPdf;
     const rf = (resume.files || []).find((f) => f.path === pathPdf);
-    if (rf && rf.dl) els.resumeDl.setAttribute("download", rf.dl); else els.resumeDl.removeAttribute("download");
+    curResumePath = pathPdf;
+    curResumeName = (rf && rf.dl) ? rf.dl : pathPdf.split("/").pop();
+    els.resumeDl.setAttribute("download", curResumeName);
     ph_disable(false);
     const miss = () => box(isEn() ? "File not found. Add it under /assets/resume." : "파일을 찾지 못했어요. /assets/resume 에 넣어주세요.");
     fetch(pathPdf, { method: "HEAD" }).then((r) => { if (r.ok) els.resumePreview.innerHTML = `<iframe src="${esc(pathPdf)}" title="resume"></iframe>`; else miss(); }).catch(miss);
@@ -321,6 +324,20 @@
     els.modalClose.addEventListener("click", closeResume);
     els.modal.addEventListener("click", (e) => { if (e.target === els.modal) closeResume(); });
     els.resumeVer.addEventListener("change", updateResume);
+    // Blob download: bypasses Vercel's Content-Disposition so the dl filename always applies
+    els.resumeDl.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (!curResumePath) return;
+      try {
+        const res = await fetch(curResumePath);
+        if (!res.ok) throw new Error("fetch failed");
+        const url = URL.createObjectURL(await res.blob());
+        const a = document.createElement("a");
+        a.href = url; a.download = curResumeName || "resume.pdf";
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+      } catch (_) { window.open(curResumePath, "_blank"); }
+    });
     els.resumeLang.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { rLang = b.dataset.rlang; els.resumeLang.querySelectorAll("button").forEach((x) => x.classList.toggle("active", x === b)); populateResumeVersions(); updateResume(); }));
     document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !els.modal.hidden) closeResume(); });
     window.addEventListener("hashchange", () => {

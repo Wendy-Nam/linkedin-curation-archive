@@ -39,8 +39,8 @@ window.SITE = {
 
   // 이력서: assets/resume/ 에 PDF를 넣고 아래 목록에 추가하면 모달에 자동 노출
   resume: { files: [
-    { id:"tech-sales", lang:"ko", label:"테크세일즈",     label_en:"Tech Sales",  path:"assets/resume/tech-sales-ko.pdf", dl:"SeoaNahm_Resume_TechSales_KO.pdf" },
-    { id:"ai-ops",     lang:"ko", label:"AI + Ops",       label_en:"AI + Ops",    path:"assets/resume/ai-ops-ko.pdf",     dl:"SeoaNahm_Resume_AI-Ops_KO.pdf" },
+    { id:"tech-sales", lang:"ko", label:"테크세일즈",     label_en:"Tech Sales",  path:"assets/resume/tech-sales-ko.pdf", dl:"남서아_국문이력서_Sales.pdf" },
+    { id:"ai-ops",     lang:"ko", label:"AI + Ops",       label_en:"AI + Ops",    path:"assets/resume/ai-ops-ko.pdf",     dl:"남서아_국문이력서_AI+Ops.pdf" },
     { id:"ops",        lang:"en", label:"Ops (영문)",     label_en:"Ops",         path:"assets/resume/ops-en.pdf",        dl:"SeoaNahm_Resume_Ops.pdf" },
     { id:"sales",      lang:"en", label:"Sales (영문)",   label_en:"Sales",       path:"assets/resume/sales-en.pdf",      dl:"SeoaNahm_Resume_Sales.pdf" }
   ] },
