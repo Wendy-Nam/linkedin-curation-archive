@@ -125,22 +125,19 @@ https://your-site.vercel.app/#sales    → 세일즈 실무 탭
 4. 플랫폼 **웹** 선택 → 사이트 URL 입력
 5. 완료하면 **측정 ID** (`G-XXXXXXXXXX` 형식) 발급
 
-### index.html에서 교체
+### data.js에서 교체
 
-`index.html` 상단의 아래 코드에서 `G-ZVS1SMYQVP` 부분을 본인 ID로 교체합니다.
+`index.html`이 아닌 **`data.js`** 파일 상단에서 교체합니다.
 
-```html
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');  ← 여기도 교체
-</script>
+```js
+ga: "G-ZVS1SMYQVP",  // ← 본인 측정 ID로 교체
 ```
 
-GA 없이 쓰고 싶으면 위 `<script>` 블록 전체를 삭제해도 됩니다.
+GA 없이 쓰고 싶으면 값을 비워두면 됩니다.
+
+```js
+ga: "",  // GA 비활성화
+```
 
 ---
 
