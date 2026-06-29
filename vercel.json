@@ -1,0 +1,40 @@
+{
+  "headers": [
+    {
+      "source": "/assets/resume/ops-en.pdf",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "inline; filename=\"SeoaNahm_Resume_Ops.pdf\""
+        }
+      ]
+    },
+    {
+      "source": "/assets/resume/sales-en.pdf",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "inline; filename=\"SeoaNahm_Resume_Sales.pdf\""
+        }
+      ]
+    },
+    {
+      "source": "/assets/resume/ai-ops-ko.pdf",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "inline; filename=\"resume.pdf\"; filename*=UTF-8''%EB%82%A8%EC%84%9C%EC%95%84_%EA%B5%AD%EB%AC%B8%EC%9D%B4%EB%A0%A5%EC%84%9C_AI%2BOps.pdf"
+        }
+      ]
+    },
+    {
+      "source": "/assets/resume/tech-sales-ko.pdf",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "inline; filename=\"resume.pdf\"; filename*=UTF-8''%EB%82%A8%EC%84%9C%EC%95%84_%EA%B5%AD%EB%AC%B8%EC%9D%B4%EB%A0%A5%EC%84%9C_Sales.pdf"
+        }
+      ]
+    }
+  ]
+}
