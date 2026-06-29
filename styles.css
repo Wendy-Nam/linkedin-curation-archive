@@ -173,7 +173,7 @@ a { color: inherit; text-decoration: none; }
 .social-btn svg { width: 18px; height: 18px; }
 .hbtn { display: inline-flex; align-items: center; gap: 5px; padding: 9px 18px; font: inherit; font-size: 13px; font-weight: 600; color: var(--text); background: var(--bg); border: 1px solid var(--border-2); border-radius: 8px; cursor: pointer; }
 .hbtn:hover { background: var(--bg-hover); }
-.hbtn svg { width: 13px; height: 13px; }
+.hbtn svg { width: 15px; height: 15px; }
 .hbtn-primary { background: var(--active); color: var(--bg); border-color: var(--active); }
 .hbtn-primary:hover { filter: opacity(.9); background: var(--active); }
 .home-section-head { display: flex; align-items: baseline; justify-content: space-between; margin: 28px 0 2px; }
