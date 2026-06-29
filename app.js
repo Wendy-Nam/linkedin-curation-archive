@@ -42,7 +42,7 @@
     themeD: $("theme-toggle"), themeM: $("theme-toggle-m"), langD: $("lang-toggle"), langM: $("lang-toggle-m"),
     modal: $("resume-modal"), modalClose: $("resume-close"), resumeLang: $("resume-lang"),
     resumeVer: $("resume-version"), resumePreview: $("resume-preview"),
-    resumeDl: $("resume-download"), resumeOpen: $("resume-open"),
+    resumeDl: $("resume-download"),
   };
 
   /* helpers */
@@ -286,19 +286,18 @@
     els.resumeLang.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.rlang === rLang));
     populateResumeVersions();
     els.resumeDl.textContent = isEn() ? "Download" : "다운로드";
-    els.resumeOpen.textContent = isEn() ? "Open in new tab" : "새 탭에서 열기";
     els.modal.hidden = false; document.body.style.overflow = "hidden"; updateResume();
   }
   function closeResume() { els.modal.hidden = true; document.body.style.overflow = ""; }
   function updateResume() {
     const pathPdf = els.resumeVer.value;
     const box = (msg) => { els.resumePreview.innerHTML = `<div class="resume-empty"><p>${msg}</p>${pathPdf ? `<p class="resume-empty-path">${esc(pathPdf)}</p>` : ""}</div>`; };
-    if (!pathPdf) { els.resumeDl.removeAttribute("href"); els.resumeOpen.removeAttribute("href"); ph_disable(true); box(isEn() ? "No resume for this language yet." : "이 언어의 이력서가 아직 없습니다."); return; }
-    els.resumeDl.href = pathPdf; els.resumeOpen.href = pathPdf; ph_disable(false);
+    if (!pathPdf) { els.resumeDl.removeAttribute("href"); ph_disable(true); box(isEn() ? "No resume for this language yet." : "이 언어의 이력서가 아직 없습니다."); return; }
+    els.resumeDl.href = pathPdf; ph_disable(false);
     const miss = () => box(isEn() ? "File not found. Add it under /assets/resume." : "파일을 찾지 못했어요. /assets/resume 에 넣어주세요.");
     fetch(pathPdf, { method: "HEAD" }).then((r) => { if (r.ok) els.resumePreview.innerHTML = `<iframe src="${esc(pathPdf)}" title="resume"></iframe>`; else miss(); }).catch(miss);
   }
-  function ph_disable(d) { [els.resumeDl, els.resumeOpen].forEach(el => { el.style.pointerEvents = d ? "none" : ""; el.style.opacity = d ? ".5" : ""; }); }
+  function ph_disable(d) { els.resumeDl.style.pointerEvents = d ? "none" : ""; els.resumeDl.style.opacity = d ? ".5" : ""; }
 
   /* ── init ── */
   function syncSort() { els.sortToggle.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.sort === sortMode)); }
