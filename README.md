@@ -53,7 +53,32 @@ Linkedin_Curation_Website/
 
 ---
 
-## 3. 프로필 사진 넣기 (선택)
+## 3. 이력서 PDF 넣기
+
+`assets/resume/` 폴더에 PDF를 넣고 `data.js`의 `resume.files` 목록에 추가하면 모달에 자동 노출됩니다.
+
+> ⚠️ **PDF 메타데이터 반드시 확인하세요**
+>
+> 특정 회사에 제출했던 이력서를 그대로 올리면, PDF 내부 제목(Title)에
+> **지원 회사명, 문서 작성자, 파일명** 등이 박혀 있을 수 있습니다.
+> PDF 뷰어 상단에 고스란히 노출되니 업로드 전 반드시 정리하세요.
+>
+> **터미널에서 확인 & 수정:**
+> ```bash
+> # 설치 (최초 1회)
+> brew install exiftool
+>
+> # 현재 제목 확인
+> exiftool -Title assets/resume/내이력서.pdf
+>
+> # 제목 변경
+> exiftool -Title="테크세일즈 이력서" assets/resume/내이력서.pdf
+> rm assets/resume/내이력서.pdf_original  # 백업 파일 정리
+> ```
+
+---
+
+## 4. 프로필 사진 넣기 (선택)
 
 `assets/` 폴더를 만들고 `profile.jpg` 를 넣으면 자동으로 표시됩니다.
 없으면 파란 원에 이니셜(`남`)이 나옵니다. (이니셜은 `data.js`의 `initials` 에서 변경)
