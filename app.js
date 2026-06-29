@@ -328,4 +328,19 @@
     });
   }
   init();
+
+  // GA — data.js의 ga 필드에 ID가 있을 때만 로드
+  (function() {
+    const id = window.SITE && window.SITE.ga;
+    if (!id) return;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', id);
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+    document.head.appendChild(s);
+  })();
 })();

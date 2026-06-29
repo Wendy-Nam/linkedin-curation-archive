@@ -4,6 +4,9 @@
  *        title · summary (KO) / title_en · summary_en (EN) / url
  * ============================================================ */
 window.SITE = {
+  // ⚠️ 포크 시 본인 GA4 측정 ID로 교체하세요. 비워두면 GA가 비활성화됩니다.
+  ga: "G-ZVS1SMYQVP",
+
   profile: {
     name: "남서아 (Wendy)", name_en: "Seoa Nam (Wendy)",
     headline: "AI-native SalesOps Builder | Sales Infrastructure × Data/AI Automation",
