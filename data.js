@@ -17,6 +17,7 @@ window.SITE = {
     followers: 3039,
     linkedin: "https://www.linkedin.com/in/seo-a-nam/",
     github: "https://github.com/Wendy-Nam/",
+    medium: "https://medium.com/@hanzoom2000",
     photo: "assets/profile.jpg", initials: "남"
   },
 
